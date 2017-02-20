@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Series;
 use App\Transformers\SeriesTransformer;
+use App\Transformers\ProductionTransformer;
 use Illuminate\Http\Request;
 
 class SeriesController extends Controller
@@ -26,5 +27,10 @@ class SeriesController extends Controller
   protected function transformer()
   {
       return new SeriesTransformer;
+  }
+
+  public function getProductions($id)
+  {
+	  return $this->response->paginator($this->find($id)->productions()->paginate(25), new ProductionTransformer);
   }
 }

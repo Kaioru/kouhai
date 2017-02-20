@@ -25,4 +25,7 @@ $api->version('v1', function ($api) {
     $api->resource('series', SeriesController::class);
 	$api->resource('productions', ProductionController::class);
 	$api->resource('episodes', EpisodeController::class);
+
+	$api->resource('series.productions', SeriesController::class . '@getProductions');
+	$api->resource('productions.episodes', ProductionController::class . '@getEpisodes');
 });

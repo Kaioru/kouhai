@@ -78,9 +78,19 @@ abstract class Controller extends BaseController
    */
   public function show($id)
   {
-      $model = $this->model->findOrFail($id);
+      $model = find($id);
       $transformer = $this->transformer;
       return $this->response->item($model, $transformer);
+  }
+
+  /**
+   * Finds the specified resource.
+   * @param int $id
+   * @return \Illuminate\Database\Eloquent\Model
+   */
+  public function find($id)
+  {
+      return $this->model->findOrFail($id);
   }
 
   /**
