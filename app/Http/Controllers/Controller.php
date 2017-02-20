@@ -67,7 +67,11 @@ abstract class Controller extends BaseController
    */
   public function store(Request $request)
   {
-      //
+      $model = new $this->model($request->all());
+      $transformer = $this->transformer;
+
+      $model->save();
+      return $this->response->item($model, $transformer);
   }
 
   /**
@@ -102,7 +106,11 @@ abstract class Controller extends BaseController
    */
   public function update(Request $request, $id)
   {
-      //
+      $model = $this->find($id);
+      $transformer = $this->transformer;
+
+      $model->update($request->all());
+      return $this->response->item($model, $transformer);
   }
 
   /**
@@ -113,6 +121,7 @@ abstract class Controller extends BaseController
    */
   public function destroy($id)
   {
-      //
+      $this->model->destroy($id);
+      return $this->response->noContent();
   }
 }
