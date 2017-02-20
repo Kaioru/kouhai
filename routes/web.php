@@ -1,5 +1,10 @@
 <?php
 
+use Dingo\Api\Routing\Router;
+use App\Http\Controllers\SeriesController;
+use App\Http\Controllers\ProductionController;
+use App\Http\Controllers\EpisodeController;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -13,4 +18,11 @@
 
 $app->get('/', function () use ($app) {
     return $app->version();
+});
+
+$api = app(Router::class);
+$api->version('v1', function ($api) {
+    $api->resource('series', SeriesController::class);
+	$api->resource('productions', ProductionController::class);
+	$api->resource('episodes', EpisodeController::class);
 });

@@ -17,3 +17,24 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'email' => $faker->email,
     ];
 });
+
+$factory->define(App\Series::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->sentence(3),
+		'description' => $faker->sentance(),
+    ];
+});
+
+$factory->define(App\Production::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->sentence(3),
+		'description' => $faker->sentance(),
+    ];
+});
+
+$factory->define(App\Episode::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->sentence(3),
+		'description' => $faker->sentance(),
+    ];
+});
