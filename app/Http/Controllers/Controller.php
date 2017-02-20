@@ -78,7 +78,7 @@ abstract class Controller extends BaseController
    */
   public function show($id)
   {
-      $model = find($id);
+      $model = $this->find($id);
       $transformer = $this->transformer;
       return $this->response->item($model, $transformer);
   }
