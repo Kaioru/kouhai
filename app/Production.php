@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Production extends Model
 {
+	protected $fillable = [
+        'title',
+        'description',
+    ];
+
     /**
      * Get the series that owns the production.
      */
