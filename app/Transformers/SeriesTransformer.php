@@ -7,11 +7,12 @@ use League\Fractal\TransformerAbstract;
 
 class SeriesTransformer extends TransformerAbstract
 {
-    public function transform(Series $series)
+    public function transform(Series $model)
     {
         return [
-            'id' => (int) $series->id,
-            'title' => (string) $series->title,
+            'id' => (int) $model->id,
+            'title' => (string) $model->title,
+			'description' => (string) $model->description,
         ];
     }
 }

@@ -7,12 +7,13 @@ use League\Fractal\TransformerAbstract;
 
 class ProductionTransformer extends TransformerAbstract
 {
-    public function transform(Production $production)
+    public function transform(Production $model)
     {
         return [
-            'id' => (int) $production->id,
-			'series_id' => (int) $production->series_id,
-            'title' => (string) $production->title,
+            'id' => (int) $model->id,
+			'series_id' => (int) $model->series_id,
+            'title' => (string) $model->title,
+			'description' => (string) $model->description,
         ];
     }
 }
