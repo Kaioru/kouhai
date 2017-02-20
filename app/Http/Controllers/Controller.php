@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Dingo\Api\Routing\Helpers;
+use Dingo\Api\Exception\StoreResourceFailedException;
+use Dingo\Api\Exception\UpdateResourceFailedException;
 use Illuminate\Http\Request;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 abstract class Controller extends BaseController
 {
-  use Helpers;
+    use Helpers;
 
   /**
    * Eloquent model instance.
@@ -69,6 +71,11 @@ abstract class Controller extends BaseController
   {
       $model = new $this->model($request->all());
       $transformer = $this->transformer;
+      $validator = $this->getValidationFactory()->make($request->all(), $model->validation);
+
+      if ($validator->fails()) {
+          throw new StoreResourceFailedException('Could not store new model.', $validator->errors());
+      }
 
       $model->save();
       return $this->response->item($model, $transformer);
@@ -108,7 +115,11 @@ abstract class Controller extends BaseController
   {
       $model = $this->find($id);
       $transformer = $this->transformer;
+      $validator = $this->getValidationFactory()->make($request->all(), $model->validation);
 
+      if ($validator->fails()) {
+          throw new UpdateResourceFailedException('Could not update model.', $validator->errors());
+      }
       $model->update($request->all());
       return $this->response->item($model, $transformer);
   }

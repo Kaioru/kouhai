@@ -7,11 +7,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Series extends Model
 {
-	use SoftDeletes;
+    use SoftDeletes;
 
-	protected $fillable = [
+    protected $fillable = [
         'title',
         'description',
+    ];
+
+    public $validation = [
+        'title' => ['required'],
+        'description' => ['required'],
     ];
 
     /**
