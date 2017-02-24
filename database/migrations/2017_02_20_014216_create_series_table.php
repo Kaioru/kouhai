@@ -17,7 +17,8 @@ class CreateSeriesTable extends Migration
             $table->increments('id');
             $table->text('title');
 			$table->text('description');
-			$table->integer('created_by');
+			$table->integer('creator_id');
+			$table->integer('updater_id');
             $table->timestamps();
 			$table->softDeletes();
         });

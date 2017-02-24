@@ -13,7 +13,8 @@ class SeriesTransformer extends TransformerAbstract
             'id' => (int) $model->id,
             'title' => (string) $model->title,
 			'description' => (string) $model->description,
-			'created_by' => (int) $model->created_by,
+			'creator_id' => (int) $model->creator_id,
+			'updater_id' => (int) $model->updater_id,
         ];
     }
 }

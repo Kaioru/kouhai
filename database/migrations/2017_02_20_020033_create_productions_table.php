@@ -18,7 +18,8 @@ class CreateProductionsTable extends Migration
             $table->integer('series_id');
             $table->text('title');
 			$table->text('description');
-			$table->integer('created_by');
+			$table->integer('creator_id');
+			$table->integer('updater_id');
             $table->timestamps();
 			$table->softDeletes();
         });
