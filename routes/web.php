@@ -4,6 +4,7 @@ use Dingo\Api\Routing\Router;
 use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\ProductionController;
 use App\Http\Controllers\EpisodeController;
+use App\Http\Controllers\Auth\AuthenticationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,8 @@ $app->get('/', function () use ($app) {
 
 $api = app(Router::class);
 $api->version('v1', function ($api) {
+	$api->post('login', AuthenticationController::class . '@login');
+
     $api->resource('series', SeriesController::class);
     $api->resource('productions', ProductionController::class);
     $api->resource('episodes', EpisodeController::class);

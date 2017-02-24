@@ -34,6 +34,8 @@ abstract class Controller extends BaseController
   {
       $this->model = $this->model();
       $this->transformer = $this->transformer();
+
+	  $this->middleware('api.auth', ['only' => ['store', 'update', 'destroy']]);
   }
 
   /**

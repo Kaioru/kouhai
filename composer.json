@@ -9,7 +9,9 @@
         "laravel/lumen-framework": "5.4.*",
         "vlucas/phpdotenv": "~2.2",
         "flipbox/lumen-generator": "^5.3",
-        "dingo/api": "1.0.x@dev"
+        "dingo/api": "1.0.x@dev",
+        "tymon/jwt-auth": "1.0.0-beta2",
+        "irazasyed/jwt-auth-guard": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

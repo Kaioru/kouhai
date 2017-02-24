@@ -23,9 +23,9 @@ $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
 
-// $app->withFacades();
+$app->withFacades();
 
-// $app->withEloquent();
+$app->withEloquent();
 
 /*
 |--------------------------------------------------------------------------
@@ -79,10 +79,16 @@ $app->singleton(
 */
 
 // $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
+$app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 $app->register(Dingo\Api\Provider\LumenServiceProvider::class);
+$app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
+$app->register(Irazasyed\JwtAuthGuard\JwtAuthGuardServiceProvider::class);
+
+app('Dingo\Api\Auth\Auth')->extend('jwt', function ($app) {
+   return new Dingo\Api\Auth\Provider\JWT($app['Tymon\JWTAuth\JWTAuth']);
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -98,7 +104,5 @@ $app->register(Dingo\Api\Provider\LumenServiceProvider::class);
 $app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
     require __DIR__.'/../routes/web.php';
 });
-
-$app->withEloquent();
 
 return $app;
