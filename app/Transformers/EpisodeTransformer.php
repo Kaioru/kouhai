@@ -14,6 +14,7 @@ class EpisodeTransformer extends TransformerAbstract
             'production_id' => (int) $model->production_id,
             'title' => (string) $model->title,
 			'description' => (string) $model->description,
+			'created_by' => (int) $model->created_by,
         ];
     }
 }

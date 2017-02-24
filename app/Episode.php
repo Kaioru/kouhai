@@ -26,4 +26,11 @@ class Episode extends Model
     {
         return $this->belongsTo('App\Production');
     }
+	/**
+     * Get the user that owns the episode.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'created_by');
+    }
 }

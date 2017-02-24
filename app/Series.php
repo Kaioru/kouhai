@@ -26,4 +26,11 @@ class Series extends Model
     {
         return $this->hasMany('App\Production');
     }
+	/**
+     * Get the user that owns the series.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

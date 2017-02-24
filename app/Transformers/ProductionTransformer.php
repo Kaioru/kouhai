@@ -14,6 +14,7 @@ class ProductionTransformer extends TransformerAbstract
 			'series_id' => (int) $model->series_id,
             'title' => (string) $model->title,
 			'description' => (string) $model->description,
+			'created_by' => (int) $model->created_by,
         ];
     }
 }

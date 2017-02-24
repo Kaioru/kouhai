@@ -18,6 +18,7 @@ class CreateEpisodesTable extends Migration
             $table->integer('production_id');
             $table->text('title');
 			$table->text('description');
+			$table->integer('created_by');
             $table->timestamps();
 			$table->softDeletes();
         });

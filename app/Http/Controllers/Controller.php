@@ -75,6 +75,8 @@ abstract class Controller extends BaseController
       $transformer = $this->transformer;
       $validator = $this->getValidationFactory()->make($request->all(), $model->validation);
 
+	  $model->created_by = $this->user->id;
+
       if ($validator->fails()) {
           throw new StoreResourceFailedException('Could not store new model.', $validator->errors());
       }
