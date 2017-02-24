@@ -16,10 +16,10 @@ class CreateEpisodesTable extends Migration
         Schema::create('episodes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('production_id');
-            $table->text('title');
+            $table->string('title');
 			$table->text('description');
-			$table->integer('creator_id');
-			$table->integer('updater_id');
+			$table->integer('creator_id')->nullable();
+			$table->integer('updater_id')->nullable();
             $table->timestamps();
 			$table->softDeletes();
         });
