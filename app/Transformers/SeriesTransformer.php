@@ -6,13 +6,13 @@ use App\Series;
 
 class SeriesTransformer extends Transformer
 {
-	/**
+    /**
      * List of resources to automatically include
      *
      * @var array
      */
     protected $availableIncludes = [
-		'productions',
+        'productions',
         'creator',
         'updater',
     ];
@@ -22,11 +22,11 @@ class SeriesTransformer extends Transformer
         return [
             'id' => (int) $model->id,
             'title' => (string) $model->title,
-			'description' => (string) $model->description,
+            'description' => (string) $model->description,
         ];
     }
 
-	/**
+    /**
      * Include Production
      *
      * @param Series $model
@@ -34,9 +34,9 @@ class SeriesTransformer extends Transformer
      */
     public function includeProductions(Series $model)
     {
-		$include = $model->productions;
+        $include = $model->productions;
         return $include
-	        ? $this->collection($include, new ProductionTransformer)
-	        : $this->null();
+            ? $this->collection($include, new ProductionTransformer)
+            : $this->null();
     }
 }

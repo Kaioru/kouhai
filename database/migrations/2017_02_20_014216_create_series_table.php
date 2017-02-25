@@ -16,11 +16,11 @@ class CreateSeriesTable extends Migration
         Schema::create('series', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-			$table->text('description');
-			$table->integer('creator_id')->nullable();
-			$table->integer('updater_id')->nullable();
+            $table->text('description');
+            $table->integer('creator_id')->nullable();
+            $table->integer('updater_id')->nullable();
             $table->timestamps();
-			$table->softDeletes();
+            $table->softDeletes();
         });
     }
 

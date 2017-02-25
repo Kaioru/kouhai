@@ -10,7 +10,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
 class User extends Model implements AuthenticatableContract, JWTSubject
 {
-	use Authenticatable;
+    use Authenticatable;
 
     /**
      * The attributes that are mass assignable.
@@ -30,7 +30,7 @@ class User extends Model implements AuthenticatableContract, JWTSubject
         'password',
     ];
 
-	/**
+    /**
      * Get the identifier that will be stored in the subject claim of the JWT
      *
      * @return mixed

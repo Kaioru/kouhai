@@ -23,7 +23,7 @@ $app->get('/', function () use ($app) {
 
 $api = app(Router::class);
 $api->version('v1', function ($api) {
-	$api->post('login', AuthenticationController::class . '@login');
+    $api->post('login', AuthenticationController::class . '@login');
 
     $api->resource('series', SeriesController::class);
     $api->resource('productions', ProductionController::class);

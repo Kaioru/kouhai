@@ -17,11 +17,11 @@ class CreateEpisodesTable extends Migration
             $table->increments('id');
             $table->integer('production_id');
             $table->string('title');
-			$table->text('description');
-			$table->integer('creator_id')->nullable();
-			$table->integer('updater_id')->nullable();
+            $table->text('description');
+            $table->integer('creator_id')->nullable();
+            $table->integer('updater_id')->nullable();
             $table->timestamps();
-			$table->softDeletes();
+            $table->softDeletes();
         });
     }
 

@@ -35,7 +35,7 @@ abstract class Controller extends BaseController
       $this->model = $this->model();
       $this->transformer = $this->transformer();
 
-	  $this->middleware('api.auth', ['only' => ['store', 'update', 'destroy']]);
+      $this->middleware('api.auth', ['only' => ['store', 'update', 'destroy']]);
   }
 
   /**
@@ -75,8 +75,8 @@ abstract class Controller extends BaseController
       $transformer = $this->transformer;
       $validator = $this->getValidationFactory()->make($request->all(), $model->validation);
 
-	  $model->creator_id = $this->user->id;
-	  $model->updater_id = $this->user->id;
+      $model->creator_id = $this->user->id;
+      $model->updater_id = $this->user->id;
 
       if ($validator->fails()) {
           throw new StoreResourceFailedException('Could not store new model.', $validator->errors());
@@ -122,7 +122,7 @@ abstract class Controller extends BaseController
       $transformer = $this->transformer;
       $validator = $this->getValidationFactory()->make($request->all(), $model->validation);
 
-	  $model->updater_id = $this->user->id;
+      $model->updater_id = $this->user->id;
 
       if ($validator->fails()) {
           throw new UpdateResourceFailedException('Could not update model.', $validator->errors());

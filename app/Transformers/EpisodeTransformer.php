@@ -6,13 +6,13 @@ use App\Episode;
 
 class EpisodeTransformer extends Transformer
 {
-	/**
+    /**
      * List of resources to automatically include
      *
      * @var array
      */
     protected $availableIncludes = [
-		'production',
+        'production',
         'creator',
         'updater',
     ];
@@ -22,11 +22,11 @@ class EpisodeTransformer extends Transformer
         return [
             'id' => (int) $model->id,
             'title' => (string) $model->title,
-			'description' => (string) $model->description,
+            'description' => (string) $model->description,
         ];
     }
 
-	/**
+    /**
      * Include Production
      *
      * @param Episode $model
@@ -34,9 +34,9 @@ class EpisodeTransformer extends Transformer
      */
     public function includeProduction(Episode $model)
     {
-		$include = $model->production;
+        $include = $model->production;
         return $include
-	        ? $this->item($include, new EpisodeTransformer)
-	        : $this->null();
+            ? $this->item($include, new EpisodeTransformer)
+            : $this->null();
     }
 }

@@ -12,8 +12,8 @@ class ProductionTransformer extends Transformer
      * @var array
      */
     protected $availableIncludes = [
-		'series',
-		'episodes',
+        'series',
+        'episodes',
         'creator',
         'updater',
     ];
@@ -27,7 +27,7 @@ class ProductionTransformer extends Transformer
         ];
     }
 
-	/**
+    /**
      * Include Series
      *
      * @param Production $model
@@ -35,13 +35,13 @@ class ProductionTransformer extends Transformer
      */
     public function includeSeries(Production $model)
     {
-		$include = $model->series;
+        $include = $model->series;
         return $include
-	        ? $this->item($include, new SeriesTransformer)
-	        : $this->null();
+            ? $this->item($include, new SeriesTransformer)
+            : $this->null();
     }
 
-	/**
+    /**
      * Include Episode
      *
      * @param Production $model
@@ -49,9 +49,9 @@ class ProductionTransformer extends Transformer
      */
     public function includeEpisodes(Production $model)
     {
-		$include = $model->episodes;
+        $include = $model->episodes;
         return $include
-	        ? $this->collection($include, new EpisodeTransformer)
-	        : $this->null();
+            ? $this->collection($include, new EpisodeTransformer)
+            : $this->null();
     }
 }

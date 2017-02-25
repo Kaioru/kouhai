@@ -26,14 +26,14 @@ class Episode extends Model
     {
         return $this->belongsTo('App\Production');
     }
-	/**
+    /**
      * Get the user that created the episode.
      */
     public function creator()
     {
         return $this->belongsTo('App\User');
     }
-	/**
+    /**
      * Get the user that updated the episode.
      */
     public function updater()

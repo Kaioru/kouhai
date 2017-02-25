@@ -33,14 +33,14 @@ class Production extends Model
     {
         return $this->hasMany('App\Episode');
     }
-	/**
+    /**
      * Get the user that created the production.
      */
     public function creator()
     {
         return $this->belongsTo('App\User');
     }
-	/**
+    /**
      * Get the user that updated the production.
      */
     public function updater()

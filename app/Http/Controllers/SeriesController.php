@@ -29,8 +29,8 @@ class SeriesController extends Controller
       return new SeriesTransformer;
   }
 
-  public function getProductions($id)
-  {
-	  return $this->response->paginator($this->find($id)->productions()->paginate(25), new ProductionTransformer);
-  }
+    public function getProductions($id)
+    {
+        return $this->response->paginator($this->find($id)->productions()->paginate(25), new ProductionTransformer);
+    }
 }
