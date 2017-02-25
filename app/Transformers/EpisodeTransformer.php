@@ -3,9 +3,8 @@
 namespace App\Transformers;
 
 use App\Episode;
-use League\Fractal\TransformerAbstract;
 
-class EpisodeTransformer extends TransformerAbstract
+class EpisodeTransformer extends Transformer
 {
 	/**
      * List of resources to automatically include
@@ -38,34 +37,6 @@ class EpisodeTransformer extends TransformerAbstract
 		$include = $model->production;
         return $include
 	        ? $this->item($include, new EpisodeTransformer)
-	        : $this->null();
-    }
-
-    /**
-     * Include Creator
-     *
-     * @param Episode $model
-     * @return \League\Fractal\Resource\Item
-     */
-    public function includeCreator(Episode $model)
-    {
-		$include = $model->creator;
-        return $include
-	        ? $this->item($include, new UserTransformer)
-	        : $this->null();
-    }
-
-    /**
-     * Include Creator
-     *
-     * @param Episode $model
-     * @return \League\Fractal\Resource\Item
-     */
-    public function includeUpdater(Episode $model)
-    {
-        $include = $model->updater;
-        return $include
-	        ? $this->item($include, new UserTransformer)
 	        : $this->null();
     }
 }
