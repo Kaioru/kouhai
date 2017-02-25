@@ -7,17 +7,65 @@ use League\Fractal\TransformerAbstract;
 
 class EpisodeTransformer extends TransformerAbstract
 {
+	/**
+     * List of resources to automatically include
+     *
+     * @var array
+     */
+    protected $availableIncludes = [
+		'production',
+        'creator',
+        'updater',
+    ];
+
     public function transform(Episode $model)
     {
         return [
             'id' => (int) $model->id,
-            'production_id' => (int) $model->production_id,
             'title' => (string) $model->title,
 			'description' => (string) $model->description,
-			'creator_id' => (int) $model->creator_id,
-			'updater_id' => (int) $model->updater_id,
-			'created_at' => (string) $model->created_at,
-			'updated_at' => (string) $model->updated_at,
         ];
+    }
+
+	/**
+     * Include Episode
+     *
+     * @param Episode $model
+     * @return \League\Fractal\Resource\Item
+     */
+    public function includeProduction(Episode $model)
+    {
+		$include = $model->production;
+        return $include
+	        ? $this->item($include, new EpisodeTransformer)
+	        : $this->null();
+    }
+
+    /**
+     * Include Creator
+     *
+     * @param Episode $model
+     * @return \League\Fractal\Resource\Item
+     */
+    public function includeCreator(Episode $model)
+    {
+		$include = $model->creator;
+        return $include
+	        ? $this->item($include, new UserTransformer)
+	        : $this->null();
+    }
+
+    /**
+     * Include Creator
+     *
+     * @param Episode $model
+     * @return \League\Fractal\Resource\Item
+     */
+    public function includeUpdater(Episode $model)
+    {
+        $include = $model->updater;
+        return $include
+	        ? $this->item($include, new UserTransformer)
+	        : $this->null();
     }
 }

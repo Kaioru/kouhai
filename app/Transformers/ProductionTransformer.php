@@ -7,17 +7,80 @@ use League\Fractal\TransformerAbstract;
 
 class ProductionTransformer extends TransformerAbstract
 {
+    /**
+     * List of resources to automatically include
+     *
+     * @var array
+     */
+    protected $availableIncludes = [
+		'series',
+		'episodes',
+        'creator',
+        'updater',
+    ];
+
     public function transform(Production $model)
     {
         return [
             'id' => (int) $model->id,
-			'series_id' => (int) $model->series_id,
             'title' => (string) $model->title,
-			'description' => (string) $model->description,
-			'creator_id' => (int) $model->creator_id,
-			'updater_id' => (int) $model->updater_id,
-			'created_at' => (string) $model->created_at,
-			'updated_at' => (string) $model->updated_at,
+            'description' => (string) $model->description
         ];
+    }
+
+	/**
+     * Include Series
+     *
+     * @param Production $model
+     * @return \League\Fractal\Resource\Item
+     */
+    public function includeSeries(Production $model)
+    {
+		$include = $model->series;
+        return $include
+	        ? $this->item($include, new SeriesTransformer)
+	        : $this->null();
+    }
+
+	/**
+     * Include Episode
+     *
+     * @param Production $model
+     * @return \League\Fractal\Resource\Item
+     */
+    public function includeEpisodes(Production $model)
+    {
+		$include = $model->episodes;
+        return $include
+	        ? $this->collection($include, new EpisodeTransformer)
+	        : $this->null();
+    }
+
+    /**
+     * Include Creator
+     *
+     * @param Production $model
+     * @return \League\Fractal\Resource\Item
+     */
+    public function includeCreator(Production $model)
+    {
+		$include = $model->creator;
+        return $include
+	        ? $this->item($include, new UserTransformer)
+	        : $this->null();
+    }
+
+    /**
+     * Include Creator
+     *
+     * @param Production $model
+     * @return \League\Fractal\Resource\Item
+     */
+    public function includeUpdater(Production $model)
+    {
+        $include = $model->updater;
+        return $include
+	        ? $this->item($include, new UserTransformer)
+	        : $this->null();
     }
 }
