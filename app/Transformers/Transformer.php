@@ -22,7 +22,7 @@ abstract class Transformer extends TransformerAbstract
 	}
 
 	/**
-	 * Include Creator
+	 * Include Updater
 	 *
 	 * @param Model $model
 	 * @return \League\Fractal\Resource\Item

@@ -27,7 +27,7 @@ class EpisodeTransformer extends Transformer
     }
 
 	/**
-     * Include Episode
+     * Include Production
      *
      * @param Episode $model
      * @return \League\Fractal\Resource\Item
