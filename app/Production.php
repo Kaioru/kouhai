@@ -34,6 +34,20 @@ class Production extends Model
         return $this->hasMany('App\Episode');
     }
     /**
+     * The casts that belong to the production.
+     */
+    public function casts()
+    {
+        return $this->belongsToMany('App\Cast', 'productions_casts')->withPivot('character_id');
+    }
+    /**
+     * The casts that belong to the production.
+     */
+    public function characters()
+    {
+        return $this->belongsToMany('App\Character', 'productions_casts')->withPivot('cast_id');
+    }
+    /**
      * Get the user that created the production.
      */
     public function creator()

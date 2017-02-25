@@ -14,6 +14,7 @@ class ProductionTransformer extends Transformer
     protected $availableIncludes = [
         'series',
         'episodes',
+        'casts',
         'creator',
         'updater',
     ];
@@ -52,6 +53,20 @@ class ProductionTransformer extends Transformer
         $include = $model->episodes;
         return $include
             ? $this->collection($include, new EpisodeTransformer)
+            : $this->null();
+    }
+
+    /**
+     * Include CastCharacter
+     *
+     * @param Production $model
+     * @return \League\Fractal\Resource\Item
+     */
+    public function includeCasts(Production $model)
+    {
+        $include = $model->casts;
+        return $include
+            ? $this->collection($include, new CastCharacterTransformer)
             : $this->null();
     }
 }

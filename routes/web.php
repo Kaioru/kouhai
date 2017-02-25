@@ -4,6 +4,8 @@ use Dingo\Api\Routing\Router;
 use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\ProductionController;
 use App\Http\Controllers\EpisodeController;
+use App\Http\Controllers\CastController;
+use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\Auth\AuthenticationController;
 
 /*
@@ -28,6 +30,9 @@ $api->version('v1', function ($api) {
     $api->resource('series', SeriesController::class);
     $api->resource('productions', ProductionController::class);
     $api->resource('episodes', EpisodeController::class);
+
+    $api->resource('casts', CastController::class);
+    $api->resource('characters', CharacterController::class);
 
     $api->resource('series.productions', SeriesController::class . '@getProductions');
     $api->resource('productions.episodes', ProductionController::class . '@getEpisodes');
