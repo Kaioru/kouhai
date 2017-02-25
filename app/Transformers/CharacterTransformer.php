@@ -28,7 +28,7 @@ class CharacterTransformer extends Transformer
     /**
      * Include Production
      *
-     * @param Production $model
+     * @param Character $model
      * @return \League\Fractal\Resource\Item
      */
     public function includeProductions(Character $model)

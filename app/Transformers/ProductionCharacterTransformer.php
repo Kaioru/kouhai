@@ -26,7 +26,7 @@ class ProductionCharacterTransformer extends ProductionTransformer
     ];
 
     /**
-     * Include CastCharacter
+     * Include Cast
      *
      * @param Production $model
      * @return \League\Fractal\Resource\Item

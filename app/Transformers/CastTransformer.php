@@ -28,7 +28,7 @@ class CastTransformer extends Transformer
     /**
      * Include Production
      *
-     * @param Production $model
+     * @param Cast $model
      * @return \League\Fractal\Resource\Item
      */
     public function includeProductions(Cast $model)

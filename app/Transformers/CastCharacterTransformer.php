@@ -26,9 +26,9 @@ class CastCharacterTransformer extends CastTransformer
     ];
 
     /**
-     * Include CastCharacter
+     * Include Character
      *
-     * @param Production $model
+     * @param Cast $model
      * @return \League\Fractal\Resource\Item
      */
     public function includeCharacter(Cast $model)
